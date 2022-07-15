@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <service android:name=".MyIntentService"></service>
+        <service android:name=".MyService"></service>
     </application>
 
 </manifest>

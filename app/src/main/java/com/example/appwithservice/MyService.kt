@@ -13,4 +13,11 @@ class MyService : Service() {
     }
 
     override fun onBind(p0: Intent?): IBinder? = null
+
+    override fun onStart(intent: Intent?, startId: Int) {
+        val dataReceive = intent?.getStringExtra("EXTRA_DATA")
+        dataReceive?.let {
+            Log.d(TAG,it)
+        }
+    }
 }
