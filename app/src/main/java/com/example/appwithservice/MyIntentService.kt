@@ -19,6 +19,14 @@ class MyIntentService : IntentService("MyIntentService") {
     }
 
     override fun onHandleIntent(p0: Intent?) {
-        TODO("Not yet implemented")
+        isRunning = true
+        try {
+            while (isRunning){
+                Log.d("MyIntentService","Service is running")
+                Thread.sleep(1000)
+            }
+        }catch (e: InterruptedException){
+            Thread.currentThread().interrupt()
+        }
     }
 }
