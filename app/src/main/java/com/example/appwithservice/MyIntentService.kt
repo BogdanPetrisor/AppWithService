@@ -7,25 +7,30 @@ import android.util.Log
 
 class MyIntentService : IntentService("MyIntentService") {
 
+    init {
+        instance = this
+    }
+
     companion object {
         private lateinit var instance: MyIntentService
         var isRunning = false
+        fun stopService() {
+            Log.d("MyIntentService", "Service is stopping...")
+            isRunning = false
+            instance.stopSelf()
+        }
+
     }
 
-    fun stopService(){
-        Log.d("MyIntentService","Service is stopping...")
-        isRunning = false
-        instance.stopSelf()
-    }
 
     override fun onHandleIntent(p0: Intent?) {
         isRunning = true
         try {
-            while (isRunning){
-                Log.d("MyIntentService","Service is running")
+            while (isRunning) {
+                Log.d("MyIntentService", "Service is running")
                 Thread.sleep(1000)
             }
-        }catch (e: InterruptedException){
+        } catch (e: InterruptedException) {
             Thread.currentThread().interrupt()
         }
     }
